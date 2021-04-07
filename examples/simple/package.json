@@ -1,0 +1,21 @@
+{
+  "name": "simple",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lib-link": "yarn link node-mongo-next-admin"
+  },
+  "dependencies": {
+    "next": "10.1.3",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "node-mongo-next-admin": "../../out"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.3",
+    "typescript": "^4.2.3"
+  }
+}

@@ -9,7 +9,7 @@ interface CauAdminProps {
 const CauAdmin: React.FC<CauAdminProps> = ({ path }) => {
   const router = useRouter()
   const { path: frontPath } = router.query
-  const MyComp = () => <div>Comp</div>
+  const MyComp = Admin.getComp(frontPath)
 
   return <MyComp />
 }

@@ -1,5 +1,5 @@
-import { CauAdmin } from 'node-mongo-next-admin'
+import { NodeMNAdmin } from 'node-mongo-next-admin'
 
-const Admin = new CauAdmin('param 1', 'param 2')
+const Admin = new NodeMNAdmin('param 1', ['author', 'book'])
 
 export default Admin

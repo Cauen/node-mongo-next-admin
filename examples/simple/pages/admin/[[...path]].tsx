@@ -30,11 +30,11 @@ export const getStaticProps: GetStaticProps = async context => {
     path: path || ""
   }
 
-  const isAValidFrontnedRoute = Admin.isAValidFrontnedRoute(path)
+  const isAValidFrontendRoute = Admin.isAValidFrontendRoute(path)
 
   return {
     props,
-    notFound: !isAValidFrontnedRoute,
+    notFound: !isAValidFrontendRoute,
     revalidate: 10,
   }
 }

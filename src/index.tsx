@@ -19,13 +19,14 @@ export class NodeMNAdmin {
     this.models = models
   }
 
-  isAValidFrontnedRoute(path: PathProps): Boolean {
+  isAValidFrontendRoute(path: PathProps): Boolean {
     const [feature, ...rest] = parseArray(path)
     
     if (!feature) return true
 
     if (this.models.includes(feature)) {
-      const isCorrectSub = rest[0] === "new" || rest[0] === "list"
+      const path = rest[0] || "list"
+      const isCorrectSub = path === "new" || path === "list"
       if (isCorrectSub && !rest[1])
       return true
 

@@ -25,6 +25,7 @@ const MyComp: React.FC<MyCompProps> = ({ path, models }) => {
 
   return <div>
     <p>-{paths.join(' ')}-</p>
+    <Link href={`${root}`}><button>Admin</button></Link>
     <Link href={`${root}/${feature}/list`}><button>{feature}s</button></Link>
     <Link href={`${root}/${feature}/new`}><button>Add New</button></Link>
     <Link href={`${root}/${feature}/not`}><button>404</button></Link>

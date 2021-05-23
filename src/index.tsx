@@ -19,8 +19,25 @@ export class NodeMNAdmin {
     this.models = models
   }
 
-  getRoute(path: PathProps) {
-    return { path: `${this.configs}/${path || ""}` }
+  isAValidFrontnedRoute(path: PathProps): Boolean {
+    const [feature, ...rest] = parseArray(path)
+    
+    if (!feature) return true
+
+    if (this.models.includes(feature)) {
+      const isCorrectSub = rest[0] === "new" || rest[0] === "list"
+      if (isCorrectSub && !rest[1])
+      return true
+
+      return false
+    }
+
+
+    return false
+  }
+
+  getModels() {
+    return this.models
   }
 
   getComp(path: PathProps): React.FC {

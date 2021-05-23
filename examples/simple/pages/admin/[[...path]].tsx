@@ -11,6 +11,10 @@ const CauAdmin: React.FC<CauAdminProps> = ({ path }) => {
   const { path: frontPath } = router.query
   const MyComp = Admin.getComp(frontPath)
 
+  // const MyComp = () => Admin.getComponent(path)()
+
+  console.log({ MyComp })
+
   return <MyComp />
 }
 

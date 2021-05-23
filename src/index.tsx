@@ -24,7 +24,7 @@ export class CauAdmin {
   }
 
   getRoute(path: PathProps) {
-    return { path: `${this.configs}/${path}` }
+    return { path: `${this.configs}/${path || ""}` }
   }
 
   getComp(path: PathProps): React.FC {

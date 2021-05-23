@@ -1,10 +1,6 @@
-
-interface MyCompProps {
-  path: string
-}
-const MyComp: React.FC<MyCompProps> = ({ path }) => {
-  return <div>A{path}B</div>
-}
+import { NextApiRequest, NextApiResponse } from 'next'
+import React from 'react'
+import MyComp from './frontend/Component'
 
 type PathProps = string[] | string
 const parseArray = (value: PathProps) => {
@@ -14,11 +10,11 @@ const parseArray = (value: PathProps) => {
   return [value]
 }
 
-export class CauAdmin {
-  configs: string
-  models: string
+export class NodeMNAdmin {
+  private configs: string
+  private models: string[]
 
-  constructor(configs: string, models: string) {
+  constructor(configs: string, models: string[]) {
     this.configs = configs
     this.models = models
   }
@@ -28,7 +24,18 @@ export class CauAdmin {
   }
 
   getComp(path: PathProps): React.FC {
-    const str = parseArray(path)
-    return () => <MyComp path={str.join("/")} />
+    const arr = parseArray(path)
+    return () => <MyComp models={this.models} path={arr} />
+  }
+
+  handleApiRequest(request: NextApiRequest, response: NextApiResponse) {
+    const path = request.query.path
+    const [feature, ...rest] = parseArray(path)
+
+    if (this.models.includes(feature)) {
+      return response.send({ path: `${this.configs}/${path}` })
+    }
+
+    return response.status(404).send({ error: "Not found", status: 404 })
   }
 }

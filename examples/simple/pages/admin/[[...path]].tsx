@@ -3,10 +3,10 @@ import React from 'react';
 import { useRouter } from 'next/router'
 import Admin from '../../configs/admin'
 
-interface CauAdminProps {
+interface NodeMNAdminProps {
   path: string | string[]
 }
-const CauAdmin: React.FC<CauAdminProps> = ({ path }) => {
+const NodeMNAdmin: React.FC<NodeMNAdminProps> = ({ path }) => {
   const router = useRouter()
   const { path: frontPath } = router.query
   const MyComp = Admin.getComp(frontPath)
@@ -14,7 +14,7 @@ const CauAdmin: React.FC<CauAdminProps> = ({ path }) => {
   return <MyComp />
 }
 
-export default CauAdmin;
+export default NodeMNAdmin;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -30,8 +30,11 @@ export const getStaticProps: GetStaticProps = async context => {
     path: path || ""
   }
 
+  const isAValidFrontnedRoute = Admin.isAValidFrontnedRoute(path)
+
   return {
     props,
+    notFound: !isAValidFrontnedRoute,
     revalidate: 10,
   }
 }
